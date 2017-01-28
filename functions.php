@@ -62,4 +62,27 @@ $power= 'AAAAAQAAAAEAAAAVAw==';
 
 	};
 
+
+function reload_playlist() {
+
+$dir = './';
+$list = array_diff(scandir($dir), array('..', '.'));
+// $list = preg_grep("/^.*\.(php|sh|out)$/i", $list, PREG_GREP_INVERT);
+$list = preg_grep("/^.*\.(jpg)$/i", $list); // Sort through our array and remove anything that isnt a jpg.  This will remove any script files and directories and such from our results so that they dont show up in our "File Manager"
+
+foreach ($list as $file) {
+	echo '<img class="thumbnail" src="'.$file.'"></img>';
+	}
+
+// This bit of code allows us to take our array of image files in the directory and output it to a text file that can be feed into feh like so:
+// DISPLAY=:0 feh -D 8 -f ./files.txt
+
+$playlist = natsort($list);
+$playlist = implode('', $list);
+$playlist = str_replace(".jpg", ".jpg\n", $playlist);
+file_put_contents('files.txt', $playlist, true);
+echo 'Inside function';
+
+};
+
 ?>
