@@ -20,7 +20,7 @@ $power= 'AAAAAQAAAAEAAAAVAw==';
 	$curl = curl_init();
 
 	curl_setopt_array($curl, array(
-	  CURLOPT_URL => "http://192.168.16.244/sony/IRCC",	// IP address of Sony TV
+	  CURLOPT_URL => "http://sonytv.pi/sony/IRCC",	// IP address of Sony TV
 	  CURLOPT_RETURNTRANSFER => true,
 	  CURLOPT_ENCODING => "",
 	  CURLOPT_MAXREDIRS => 10,
